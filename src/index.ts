@@ -9,7 +9,7 @@ const passLength = document.getElementById("length"),
 
 btnCopy.addEventListener("click", copyToClipboard);
 
-const randomFunc = {
+const objFunc = {
   lower: getRandomLowerCase,
   upper: getRandomUpperCase,
   number: getRandomNumber,
@@ -30,6 +30,7 @@ function copyToClipboard(): string {
       });
   }
 }
+
 function getRandomLowerCase(): string {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
@@ -56,14 +57,21 @@ function passwordGenerate(
 ): string {
   let passwordResult: string = "";
   const typesCount: number = +lower + +upper + +number + +symbol;
-  console.log("length:", length);
-  console.log("typesCount:", typesCount);
-  const arr = [{ lower }, { upper }, { number }, { symbol }];
-  arr.filter(item => {
-    console.log(Object.values(item)[0]);
+  if (typesCount === 0 || length < 4 || length > 20) {
+    return passwordResult;
+  }
+  const arrOfTypes: string[] = [];
+  [{ lower }, { upper }, { number }, { symbol }].forEach(item => {
+    Object.values(item)[0] ? arrOfTypes.push(Object.keys(item)[0]) : null;
   });
+  for (let i = 0; i < length; i++) {
+    passwordResult += objFunc[
+      arrOfTypes[Math.floor(Math.random() * arrOfTypes.length)]
+    ]();
+  }
   return passwordResult;
 }
+
 btnGenerate.addEventListener("click", (): void => {
   const length: number = +(<HTMLInputElement>passLength).value,
     hasLowerCase: boolean = (<HTMLInputElement>lowerCase).checked,
