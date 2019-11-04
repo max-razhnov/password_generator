@@ -1,10 +1,7 @@
 {
-  "compilerOptions": {},
-  // the plugin options
+  "compilerOptions": {
+    "lib": ["es2017", "dom"]
+  },
   "typeRoots": ["node_modules/@types"],
-  // "parcel-plugin-typescript": {
-  //   // If true type-checking is disabled
-  //   "transpileOnly": false
-  // }
   "transpileOnly": false
 }
