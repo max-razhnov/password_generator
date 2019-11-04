@@ -1,4 +1,4 @@
-# password_generator
+# Password Generator
 
 1. npm install
 2. npm start
