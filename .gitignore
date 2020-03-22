@@ -61,4 +61,5 @@ typings/
 .next
 
 .cache
-dist/
+dist
+build

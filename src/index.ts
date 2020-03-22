@@ -57,9 +57,9 @@ function passwordGenerate(
 ): string {
   let passwordResult: string = "";
   const typesCount: number = +lower + +upper + +number + +symbol;
-  if (typesCount === 0 || length < 4 || length > 20) {
-    return passwordResult;
-  }
+  // if (typesCount === 0 || length < 4 || length > 20) {
+  //   return passwordResult;
+  // }
   const arrOfTypes: string[] = [];
   [{ lower }, { upper }, { number }, { symbol }].forEach(item => {
     Object.values(item)[0] ? arrOfTypes.push(Object.keys(item)[0]) : null;
